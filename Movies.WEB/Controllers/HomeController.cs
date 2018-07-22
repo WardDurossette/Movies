@@ -5,14 +5,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Movies.WEB.Models;
+using Movies.WEB.Services;
+
 
 namespace Movies.WEB.Controllers
 {
     public class HomeController : Controller
     {
+        private IMovieService _MovieService;
+
+        public HomeController(IMovieService movieService)
+        {
+            _MovieService = movieService;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            List<Movie> movies = _MovieService.GetMovies();
+            return View(movies);
         }
 
         public IActionResult About()

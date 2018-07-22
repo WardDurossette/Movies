@@ -1,7 +1,13 @@
-﻿@{
+﻿@model IEnumerable<Movie>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <h3>Movies</h3>
 
-
+<ul>
+@foreach (var item in Model)
+{
+    <li>@item.MovieTitle</li>
+}
+</ul>
