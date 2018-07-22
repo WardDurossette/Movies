@@ -1,10 +1,12 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Movies.WEB.Models
 {
     public class MovieViewModel
     {
-        public int MovieId { get; set; }
+        [Key]
+        public int MovieID { get; set; }
 
         public string MovieTitle { get; set; }
 
