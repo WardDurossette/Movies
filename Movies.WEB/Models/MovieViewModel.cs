@@ -2,7 +2,7 @@ using System;
 
 namespace Movies.WEB.Models
 {
-    public class Movie
+    public class MovieViewModel
     {
         public int MovieId { get; set; }
 
@@ -10,7 +10,7 @@ namespace Movies.WEB.Models
 
         public int ReleaseYear { get; set; }
 
-
+        public string Genre { get; set; }
 
     }
 }

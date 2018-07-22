@@ -21,7 +21,7 @@ namespace Movies.WEB.Controllers
 
         public IActionResult Index()
         {
-            List<Movie> movies = _MovieService.GetMovies();
+            List<MovieViewModel> movies = _MovieService.GetMovies();
             return View(movies);
         }
 
@@ -42,6 +42,7 @@ namespace Movies.WEB.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            
         }
     }
 }

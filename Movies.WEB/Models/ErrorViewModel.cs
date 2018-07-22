@@ -8,4 +8,5 @@ namespace Movies.WEB.Models
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
     }
+
 }
