@@ -8,7 +8,7 @@ namespace Movies.WEB.Services
     public interface IMovieService
     {
 
-        List<Movie> GetMovies();
+        List<MovieViewModel> GetMovies();
 
 
 
