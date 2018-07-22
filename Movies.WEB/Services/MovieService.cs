@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using Movies.WEB.Models;
 
 
@@ -23,6 +24,28 @@ namespace Movies.WEB.Services
                     Genre = "Drama/Romance"
                 }
             };
+
+
+        public void AddMoviesToDB(MoviesDBContext dbContext)
+        {
+            MovieService movieService = new MovieService();
+
+         
+                foreach(var movie in movieService.GetMovies())
+                {
+                    MovieViewModel oNew = new MovieViewModel();
+                    oNew.MovieTitle = movie.MovieTitle;
+                    oNew.ReleaseYear = movie.ReleaseYear;
+                    oNew.Genre = movie.Genre;
+
+                    dbContext.Movies.Add(oNew);
+                    dbContext.SaveChanges();
+                }
+
+         }
+
+
+
     }
 
 

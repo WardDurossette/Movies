@@ -13,9 +13,11 @@ namespace Movies.WEB.Controllers
     public class HomeController : Controller
     {
         private IMovieService _MovieService;
+        private MoviesDBContext _DBContextMovies;
 
-        public HomeController(IMovieService movieService)
+        public HomeController(MoviesDBContext dBContextMovies, IMovieService movieService)
         {
+            _DBContextMovies = dBContextMovies;
             _MovieService = movieService;
         }
 
@@ -25,22 +27,15 @@ namespace Movies.WEB.Controllers
             return View(movies);
         }
 
+      
         public IActionResult AddMovies()
         {
-            using(var dbContext = new MoviesDBContext())
-            {
-                List<MovieViewModel> movies = _MovieService.GetMovies();
 
-                foreach(var movie in movies)
-                {
-                    dbContext.Movies.Add(movie);
-                    dbContext.SaveChanges();
-                }
+            _MovieService.AddMoviesToDB(_DBContextMovies);
 
-            }
+
             return RedirectToAction("Index");
         }
-
 
 
         public IActionResult About()

@@ -8,10 +8,11 @@ namespace Movies.WEB.Models
     public class MoviesDBContext : DbContext
     {
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public MoviesDBContext (DbContextOptions<MoviesDBContext> options)
+            : base(options)
         {
-            optionsBuilder.UseSqlite("Data Source=movies.db");
         }
+
 
         public DbSet<MovieViewModel> Movies { get; set; }
 

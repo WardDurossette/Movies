@@ -10,7 +10,7 @@ namespace Movies.WEB.Services
 
         List<MovieViewModel> GetMovies();
 
-
+        void AddMoviesToDB(MoviesDBContext dbContext);
 
     }
 }
