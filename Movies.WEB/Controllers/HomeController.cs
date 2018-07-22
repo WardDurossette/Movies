@@ -25,6 +25,24 @@ namespace Movies.WEB.Controllers
             return View(movies);
         }
 
+        public IActionResult AddMovies()
+        {
+            using(var dbContext = new MoviesDBContext())
+            {
+                List<MovieViewModel> movies = _MovieService.GetMovies();
+
+                foreach(var movie in movies)
+                {
+                    dbContext.Movies.Add(movie);
+                    dbContext.SaveChanges();
+                }
+
+            }
+            return RedirectToAction("Index");
+        }
+
+
+
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
